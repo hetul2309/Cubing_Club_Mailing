@@ -1,0 +1,13 @@
+{
+  "name": "cubing-club-email",
+  "version": "1.0.0",
+  "description": "HTML email sender for the Cubing Club at Dhirubhai Ambani University",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "nodemailer": "^9.0.5"
+  }
+}
