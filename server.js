@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 // ---------------------------------------------------------------------------
-// Validation – check required config before attempting to send
+// 1. Validation – check required config
 // ---------------------------------------------------------------------------
 
 if (!process.env.EMAIL_USER) {
@@ -19,70 +19,72 @@ if (!process.env.EMAIL_PASSWORD) {
   process.exit(1);
 }
 
-const htmlFilePath = path.join(__dirname, "emails", "workshop.html");
+// ---------------------------------------------------------------------------
+// 2. Select Template (from command argument, .env, or default to workshop.html)
+//    Usage:
+//      node server.js                  --> sends emails/workshop.html
+//      node server.js competition.html  --> sends emails/competition.html
+// ---------------------------------------------------------------------------
+
+const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "workshop.html";
+const templateFilename = templateArg.endsWith(".html") ? templateArg : `${templateArg}.html`;
+const htmlFilePath = path.join(__dirname, "emails", templateFilename);
 
 if (!fs.existsSync(htmlFilePath)) {
-  console.error("❌ Error: emails/workshop.html not found.");
-  console.error("   Make sure the file exists at: " + htmlFilePath);
+  console.error(`❌ Error: Template file not found at: ${htmlFilePath}`);
+  console.error("   Available templates in emails/ folder:");
+  const available = fs.readdirSync(path.join(__dirname, "emails")).filter((f) => f.endsWith(".html"));
+  available.forEach((f) => console.log(`   - ${f}`));
   process.exit(1);
 }
 
-// ---------------------------------------------------------------------------
-// Load HTML template & prepare inline CID attachments using exact 7 files
-// ---------------------------------------------------------------------------
-
 let rawHtml = fs.readFileSync(htmlFilePath, "utf-8");
 
-// Map relative image paths in HTML to CIDs for email transport
-const emailHtml = rawHtml
-  .replace(/src=["']images\/3x3_image_modern\.png["']/g, 'src="cid:3x3_image_modern"')
-  .replace(/src=["']images\/2x2_image_modern\.png["']/g, 'src="cid:2x2_image_modern"')
-  .replace(/src=["']images\/pyra_image_modern\.png["']/g, 'src="cid:pyra_image_modern"')
-  .replace(/src=["']images\/cubing_club_logo\.jpg["']/g, 'src="cid:cubing_club_logo"')
-  .replace(/src=["']images\/instagram_logo\.png["']/g, 'src="cid:instagram_logo"')
-  .replace(/src=["']images\/youtube_logo\.png["']/g, 'src="cid:youtube_logo"')
-  .replace(/src=["']images\/linkedin_logo\.png["']/g, 'src="cid:linkedin_logo"');
-
-const imageAttachments = [
-  {
-    filename: "3x3_image_modern.png",
-    path: path.join(__dirname, "images", "3x3_image_modern.png"),
-    cid: "3x3_image_modern",
-  },
-  {
-    filename: "2x2_image_modern.png",
-    path: path.join(__dirname, "images", "2x2_image_modern.png"),
-    cid: "2x2_image_modern",
-  },
-  {
-    filename: "pyra_image_modern.png",
-    path: path.join(__dirname, "images", "pyra_image_modern.png"),
-    cid: "pyra_image_modern",
-  },
-  {
-    filename: "cubing_club_logo.jpg",
-    path: path.join(__dirname, "images", "cubing_club_logo.jpg"),
-    cid: "cubing_club_logo",
-  },
-  {
-    filename: "instagram_logo.png",
-    path: path.join(__dirname, "images", "instagram_logo.png"),
-    cid: "instagram_logo",
-  },
-  {
-    filename: "youtube_logo.png",
-    path: path.join(__dirname, "images", "youtube_logo.png"),
-    cid: "youtube_logo",
-  },
-  {
-    filename: "linkedin_logo.png",
-    path: path.join(__dirname, "images", "linkedin_logo.png"),
-    cid: "linkedin_logo",
-  },
-];
+// Extract title from HTML if no subject is specified in .env
+const titleMatch = rawHtml.match(/<title>([^<]+)<\/title>/i);
+const defaultSubject = titleMatch ? titleMatch[1].trim() : "The Cubing Club – DAU";
+const emailSubject = process.env.EMAIL_SUBJECT || defaultSubject;
 
 // ---------------------------------------------------------------------------
-// Create the Nodemailer transporter (Gmail SMTP)
+// 3. Dynamic Inline Image Detection & CID Attachment Resolver
+//    Automatically scans HTML for any `images/<filename>` references,
+//    replaces them with `cid:<cid>`, and attaches them from the `images/` folder.
+// ---------------------------------------------------------------------------
+
+const imagesDir = path.join(__dirname, "images");
+const imageAttachments = [];
+const detectedImages = new Set();
+
+// Match src="images/..." or src="../images/..."
+const imgSrcRegex = /src=["'](?:\.\.\/)?images\/([^"']+)["']/g;
+let match;
+let emailHtml = rawHtml;
+
+while ((match = imgSrcRegex.exec(rawHtml)) !== null) {
+  const imageName = match[1];
+  detectedImages.add(imageName);
+}
+
+detectedImages.forEach((imageName) => {
+  const localImagePath = path.join(imagesDir, imageName);
+  if (fs.existsSync(localImagePath)) {
+    const cidName = imageName.replace(/[^a-zA-Z0-9_-]/g, "_");
+    // Replace all occurrences of this image path with cid:<cidName>
+    const replacePattern = new RegExp(`src=["'](?:\\.\\./)?images\\/${imageName.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&")}["']`, "g");
+    emailHtml = emailHtml.replace(replacePattern, `src="cid:${cidName}"`);
+
+    imageAttachments.push({
+      filename: imageName,
+      path: localImagePath,
+      cid: cidName,
+    });
+  } else {
+    console.warn(`⚠️ Warning: Image referenced in HTML but not found in images/ directory: ${imageName}`);
+  }
+});
+
+// ---------------------------------------------------------------------------
+// 4. Create Nodemailer transporter (Gmail SMTP)
 // ---------------------------------------------------------------------------
 
 const transporter = nodemailer.createTransport({
@@ -94,34 +96,38 @@ const transporter = nodemailer.createTransport({
 });
 
 // ---------------------------------------------------------------------------
-// Define the email
+// 5. Define Recipients & Mail Options
 // ---------------------------------------------------------------------------
 
-// List of recipient email addresses
 const recipients = [
-  // "yashvipachani12@gmail.com", 
-  "202511026@dau.ac.in", //Hetul
-  // "202401436@dau.ac.in", //Vatsal
-  // "202403062@dau.ac.in", //Yashvi
-  // "202301061@dau.ac.in",  //Dhruvil
-  // "202301034@dau.ac.in", //Jiya
-  // "202501153@dau.ac.in"  //Krishiv
-  // "premkundadia201@gmail.com", 
+  // "yashvipachani12@gmail.com",
+  "202511026@dau.ac.in", // Hetul
+  // "202401436@dau.ac.in", // Vatsal
+  // "202403062@dau.ac.in", // Yashvi
+  // "202301061@dau.ac.in", // Dhruvil
+  // "202301034@dau.ac.in", // Jiya
+  // "202501153@dau.ac.in", // Krishiv
+  // "premkundadia201@gmail.com",
 ];
 
 const mailOptions = {
   from: `"cubing club" <${process.env.EMAIL_USER}>`,
   to: recipients,
-  subject: "🧩 Ready, Set, Twist! - The Cubing Club Workshop",
+  subject: emailSubject,
   html: emailHtml,
   attachments: imageAttachments,
 };
 
 // ---------------------------------------------------------------------------
-// Send the email
+// 6. Send the Email
 // ---------------------------------------------------------------------------
 
-console.log("📨 Sending email to:", mailOptions.to);
+console.log("--------------------------------------------------");
+console.log(`📄 Using template: emails/${templateFilename}`);
+console.log(`📌 Subject:        ${mailOptions.subject}`);
+console.log(`🖼️  Inline images:  ${imageAttachments.length} attached (${imageAttachments.map((a) => a.filename).join(", ") || "none"})`);
+console.log(`📨 Sending to:     ${Array.isArray(mailOptions.to) ? mailOptions.to.join(", ") : mailOptions.to}`);
+console.log("--------------------------------------------------");
 
 transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
@@ -131,7 +137,6 @@ transporter.sendMail(mailOptions, (error, info) => {
     console.error("   • Make sure EMAIL_USER and EMAIL_PASSWORD in .env are correct.");
     console.error("   • Use a Google App Password, NOT your regular Gmail password.");
     console.error("   • Enable 2-Step Verification on your Google account first.");
-    console.error("   • Check that Less Secure App Access or App Passwords are configured.");
     return;
   }
 
