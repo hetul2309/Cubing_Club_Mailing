@@ -20,13 +20,13 @@ if (!process.env.EMAIL_PASSWORD) {
 }
 
 // ---------------------------------------------------------------------------
-// 2. Select Template (from command argument, .env, or default to workshop.html)
+// 2. Select Template (from command argument, .env, or default to intra_da.html)
 //    Usage:
-//      node server.js                  --> sends emails/workshop.html
-//      node server.js competition.html  --> sends emails/competition.html
+//      node server.js                  --> sends emails/intra_da.html
+//      node server.js workshop.html    --> sends emails/workshop.html
 // ---------------------------------------------------------------------------
 
-const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "workshop.html";
+const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "intra_da.html";
 const templateFilename = templateArg.endsWith(".html") ? templateArg : `${templateArg}.html`;
 const htmlFilePath = path.join(__dirname, "emails", templateFilename);
 
@@ -102,13 +102,69 @@ const transporter = nodemailer.createTransport({
 const recipients = [
   // "yashvipachani12@gmail.com",
   "202511026@dau.ac.in", // Hetul
-  // "202401436@dau.ac.in", // Vatsal
-  // "202403062@dau.ac.in", // Yashvi
-  // "202301061@dau.ac.in", // Dhruvil
-  // "202301034@dau.ac.in", // Jiya
-  // "202501153@dau.ac.in", // Krishiv
+  "202401436@dau.ac.in", // Vatsal
+  "202403062@dau.ac.in", // Yashvi
+  "202501153@dau.ac.in", // Krishiv
   // "premkundadia201@gmail.com",
 ];
+
+// const recipients = [
+//   "phd2016@dau.ac.in",
+//   "phd2017@dau.ac.in",
+//   "phd2018@dau.ac.in",
+//   "phd2019@dau.ac.in",
+//   "phd2020@dau.ac.in",
+//   "phd2021@dau.ac.in",
+//   "phd2022@dau.ac.in",
+//   "phd2023@dau.ac.in",
+//   "phd2024@dau.ac.in",
+//   "phd2025@dau.ac.in",
+//   "phd@dau.ac.in",
+//   "phd2026@dau.ac.in",
+
+//   "btechict2023@dau.ac.in",
+//   "btechcs2023@dau.ac.in",
+//   "btechmnc2023@dau.ac.in",
+//   "btechevd2023@dau.ac.in",
+
+//   "btechict2024@dau.ac.in",
+//   "btechcs2024@dau.ac.in",
+//   "btechmnc2024@dau.ac.in",
+//   "btechevd2024@daiict.ac.in",
+
+//   "mtech2024@dau.ac.in",
+//   "mdes2024@dau.ac.in",
+//   "mscds2024@dau.ac.in",
+//   "mscit2024@dau.ac.in",
+//   "mscaa2024@dau.ac.in",
+
+//   "btechict2025@dau.ac.in",
+//   "btechcs2025@dau.ac.in",
+//   "btechmnc2025@dau.ac.in",
+//   "btechevd2025@dau.ac.in",
+//   "mdesiuxd2025@dau.ac.in",
+//   "mscaa2025@dau.ac.in",
+//   "mdes2025@dau.ac.in",
+//   "mtech2025@dau.ac.in",
+//   "mscit2025@dau.ac.in",
+//   "mscds2025@dau.ac.in",
+
+//   "btechcsai2026@dau.ac.in",
+//   "btecheceai2026@dau.ac.in",
+//   "btechict2026@dau.ac.in",
+//   "btechevd2026@dau.ac.in",
+//   "btechmnc2026@dau.ac.in",
+//   "btechcs2026@dau.ac.in",
+//   "bsmsit2026@dau.ac.in",
+//   "bsmsdsai2026@dau.ac.in",
+//   "mtech2026@dau.ac.in",
+//   "mscds2026@dau.ac.in",
+//   "mscit2026@dau.ac.in",
+//   "mscaa2026@dau.ac.in",
+//   "mdesiuxd2026@dau.ac.in",
+// ];
+
+
 
 const mailOptions = {
   from: `"cubing club" <${process.env.EMAIL_USER}>`,
