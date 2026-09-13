@@ -20,13 +20,13 @@ if (!process.env.EMAIL_PASSWORD) {
 }
 
 // ---------------------------------------------------------------------------
-// 2. Select Template (from command argument, .env, or default to intra_da.html)
+// 2. Select Template (from command argument, .env, or default to intra_da_results.html)
 //    Usage:
-//      node server.js                  --> sends emails/intra_da.html
-//      node server.js workshop.html    --> sends emails/workshop.html
+//      node server.js                      --> sends emails/intra_da_results.html
+//      node server.js intra_da.html        --> sends emails/intra_da.html
 // ---------------------------------------------------------------------------
 
-const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "intra_da.html";
+const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "intra_da_results.html";
 const templateFilename = templateArg.endsWith(".html") ? templateArg : `${templateArg}.html`;
 const htmlFilePath = path.join(__dirname, "emails", templateFilename);
 
@@ -83,6 +83,14 @@ detectedImages.forEach((imageName) => {
   }
 });
 
+// Append an invisible unique token to prevent email clients (like Gmail) from folding repeated sections or threads
+const uniqueToken = `<div style="display:none !important;font-size:1px;color:#f0f2f5;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">&#847;&zwnj;&nbsp;[${Date.now()}]</div>`;
+if (emailHtml.includes("</body>")) {
+  emailHtml = emailHtml.replace("</body>", `${uniqueToken}</body>`);
+} else {
+  emailHtml += uniqueToken;
+}
+
 // ---------------------------------------------------------------------------
 // 4. Create Nodemailer transporter (Gmail SMTP)
 // ---------------------------------------------------------------------------
@@ -100,12 +108,13 @@ const transporter = nodemailer.createTransport({
 // ---------------------------------------------------------------------------
 
 const recipients = [
+  "hetulkadiya@gmail.com",
   // "yashvipachani12@gmail.com",
-  "202511026@dau.ac.in", // Hetul
+  //"202511026@dau.ac.in", // Hetul
   "202401436@dau.ac.in", // Vatsal
   "202403062@dau.ac.in", // Yashvi
   "202501153@dau.ac.in", // Krishiv
-  // "premkundadia201@gmail.com",
+  "premkundadia201@gmail.com",
 ];
 
 // const recipients = [
