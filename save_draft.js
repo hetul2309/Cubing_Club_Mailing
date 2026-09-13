@@ -1,5 +1,6 @@
 require("dotenv").config();
-const nodemailer = require("nodemailer");
+const { ImapFlow } = require("imapflow");
+const MailComposer = require("nodemailer/lib/mail-composer");
 const fs = require("fs");
 const path = require("path");
 
@@ -8,22 +9,17 @@ const path = require("path");
 // ---------------------------------------------------------------------------
 
 if (!process.env.EMAIL_USER) {
-  console.error("❌ Error: EMAIL_USER is not set.");
-  console.error("   Open the .env file and add your Gmail address.");
+  console.error("❌ Error: EMAIL_USER is not set in .env.");
   process.exit(1);
 }
 
 if (!process.env.EMAIL_PASSWORD) {
-  console.error("❌ Error: EMAIL_PASSWORD is not set.");
-  console.error("   Open the .env file and add your Google App Password.");
+  console.error("❌ Error: EMAIL_PASSWORD is not set in .env.");
   process.exit(1);
 }
 
 // ---------------------------------------------------------------------------
-// 2. Select Template (from command argument, .env, or default to intra_da_results.html)
-//    Usage:
-//      node server.js                      --> sends emails/intra_da_results.html
-//      node server.js intra_da.html        --> sends emails/intra_da.html
+// 2. Select Template
 // ---------------------------------------------------------------------------
 
 const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "intra_da_results.html";
@@ -32,30 +28,24 @@ const htmlFilePath = path.join(__dirname, "emails", templateFilename);
 
 if (!fs.existsSync(htmlFilePath)) {
   console.error(`❌ Error: Template file not found at: ${htmlFilePath}`);
-  console.error("   Available templates in emails/ folder:");
-  const available = fs.readdirSync(path.join(__dirname, "emails")).filter((f) => f.endsWith(".html"));
-  available.forEach((f) => console.log(`   - ${f}`));
   process.exit(1);
 }
 
 let rawHtml = fs.readFileSync(htmlFilePath, "utf-8");
 
-// Extract title from HTML if no subject is specified in .env
+// Extract title from HTML if no subject is specified
 const titleMatch = rawHtml.match(/<title>([^<]+)<\/title>/i);
 const defaultSubject = titleMatch ? titleMatch[1].trim() : "The Cubing Club – DAU";
 const emailSubject = process.env.EMAIL_SUBJECT || defaultSubject;
 
 // ---------------------------------------------------------------------------
 // 3. Dynamic Inline Image Detection & CID Attachment Resolver
-//    Automatically scans HTML for any `images/<filename>` references,
-//    replaces them with `cid:<cid>`, and attaches them from the `images/` folder.
 // ---------------------------------------------------------------------------
 
 const imagesDir = path.join(__dirname, "images");
 const imageAttachments = [];
 const detectedImages = new Set();
 
-// Match src="images/..." or src="../images/..."
 const imgSrcRegex = /src=["'](?:\.\.\/)?images\/([^"']+)["']/g;
 let match;
 let emailHtml = rawHtml;
@@ -69,7 +59,6 @@ detectedImages.forEach((imageName) => {
   const localImagePath = path.join(imagesDir, imageName);
   if (fs.existsSync(localImagePath)) {
     const cidName = imageName.replace(/[^a-zA-Z0-9_-]/g, "_");
-    // Replace all occurrences of this image path with cid:<cidName>
     const replacePattern = new RegExp(`src=["'](?:\\.\\./)?images\\/${imageName.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&")}["']`, "g");
     emailHtml = emailHtml.replace(replacePattern, `src="cid:${cidName}"`);
 
@@ -83,34 +72,14 @@ detectedImages.forEach((imageName) => {
   }
 });
 
-// Append an invisible unique token to prevent email clients (like Gmail) from folding repeated sections or threads
-const uniqueToken = `<div style="display:none !important;font-size:1px;color:#f0f2f5;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">&#847;&zwnj;&nbsp;[${Date.now()}]</div>`;
-if (emailHtml.includes("</body>")) {
-  emailHtml = emailHtml.replace("</body>", `${uniqueToken}</body>`);
-} else {
-  emailHtml += uniqueToken;
-}
-
 // ---------------------------------------------------------------------------
-// 4. Create Nodemailer transporter (Gmail SMTP)
-// ---------------------------------------------------------------------------
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-});
-
-// ---------------------------------------------------------------------------
-// 5. Define Recipients & Mail Options
+// 4. Recipients & Mail Options
 // ---------------------------------------------------------------------------
 
 const recipients = [
-  "hetulkadiya@gmail.com",
+  // "hetulkadiya@gmail.com",
   // "yashvipachani12@gmail.com",
-  //"202511026@dau.ac.in", // Hetul
+  "202511026@dau.acin", // Hetul
   // "202401436@dau.ac.in", // Vatsal
   // "202403062@dau.ac.in", // Yashvi
   // "202501153@dau.ac.in", // Krishiv
@@ -173,8 +142,6 @@ const recipients = [
 //   "mdesiuxd2026@dau.ac.in",
 // ];
 
-
-
 const mailOptions = {
   from: `"cubing club" <${process.env.EMAIL_USER}>`,
   to: recipients,
@@ -184,27 +151,57 @@ const mailOptions = {
 };
 
 // ---------------------------------------------------------------------------
-// 6. Send the Email
+// 5. Build MIME Message and Save to Gmail Drafts via IMAP
 // ---------------------------------------------------------------------------
 
-console.log("--------------------------------------------------");
-console.log(`📄 Using template: emails/${templateFilename}`);
-console.log(`📌 Subject:        ${mailOptions.subject}`);
-console.log(`🖼️  Inline images:  ${imageAttachments.length} attached (${imageAttachments.map((a) => a.filename).join(", ") || "none"})`);
-console.log(`📨 Sending to:     ${Array.isArray(mailOptions.to) ? mailOptions.to.join(", ") : mailOptions.to}`);
-console.log("--------------------------------------------------");
+async function saveAsDraft() {
+  console.log("--------------------------------------------------");
+  console.log(`📄 Template:       emails/${templateFilename}`);
+  console.log(`📌 Subject:        ${mailOptions.subject}`);
+  console.log(`🖼️  Inline images:  ${imageAttachments.length} attached`);
+  console.log(`📨 To:             ${Array.isArray(mailOptions.to) ? mailOptions.to.join(", ") : mailOptions.to}`);
+  console.log("--------------------------------------------------");
+  console.log("⏳ Composing email and connecting to Gmail IMAP...");
 
-transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-    console.error("❌ Failed to send email.");
-    console.error("   Reason:", error.message);
+  const composer = new MailComposer(mailOptions);
+  const messageBuffer = await composer.compile().build();
+
+  const client = new ImapFlow({
+    host: "imap.gmail.com",
+    port: 993,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+    logger: false,
+  });
+
+  try {
+    await client.connect();
+
+    // Find the Drafts folder (specialUse: '\Drafts' or fallback '[Gmail]/Drafts')
+    let draftsPath = "[Gmail]/Drafts";
+    const mailboxes = await client.list();
+    const draftBox = mailboxes.find((box) => box.specialUse === "\\Drafts");
+    if (draftBox) {
+      draftsPath = draftBox.path;
+    }
+
+    console.log(`📁 Saving draft to: "${draftsPath}"...`);
+    await client.append(draftsPath, messageBuffer, ["\\Draft", "\\Seen"]);
+
+    console.log("✅ Successfully saved as a Draft in your Gmail!");
+    console.log("   Open Gmail -> Drafts folder to preview, edit, or test-send.");
+  } catch (err) {
+    console.error("❌ Failed to save draft via IMAP.");
+    console.error("   Reason:", err.message);
     console.error("\n   Common fixes:");
-    console.error("   • Make sure EMAIL_USER and EMAIL_PASSWORD in .env are correct.");
-    console.error("   • Use a Google App Password, NOT your regular Gmail password.");
-    console.error("   • Enable 2-Step Verification on your Google account first.");
-    return;
+    console.error("   • Make sure IMAP is enabled in Gmail Settings > Forwarding and POP/IMAP.");
+    console.error("   • Make sure EMAIL_USER and EMAIL_PASSWORD (App Password) in .env are correct.");
+  } finally {
+    await client.logout();
   }
+}
 
-  console.log("✅ Email sent successfully!");
-  console.log("   Message ID:", info.messageId);
-});
+saveAsDraft();

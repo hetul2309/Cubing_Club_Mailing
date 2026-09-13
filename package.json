@@ -4,10 +4,12 @@
   "description": "HTML email sender for the Cubing Club at Dhirubhai Ambani University",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "draft": "node save_draft.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
+    "imapflow": "^2.0.2",
     "nodemailer": "^9.0.5"
   }
 }
