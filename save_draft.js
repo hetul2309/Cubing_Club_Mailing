@@ -46,12 +46,12 @@ const imagesDir = path.join(__dirname, "images");
 const imageAttachments = [];
 const detectedImages = new Set();
 
-const imgSrcRegex = /src=["'](?:\.\.\/)?images\/([^"']+)["']/g;
+const imgRefRegex = /(?:src=["']|background=["']|url\(["']?|<v:fill[^>]+src=["'])(?:\.\.\/)?images\/([^"'\)\s>]+)/g;
 let match;
 let emailHtml = rawHtml;
 
-while ((match = imgSrcRegex.exec(rawHtml)) !== null) {
-  const imageName = match[1];
+while ((match = imgRefRegex.exec(rawHtml)) !== null) {
+  const imageName = match[1].replace(/["'\)]/g, "");
   detectedImages.add(imageName);
 }
 
@@ -59,8 +59,8 @@ detectedImages.forEach((imageName) => {
   const localImagePath = path.join(imagesDir, imageName);
   if (fs.existsSync(localImagePath)) {
     const cidName = imageName.replace(/[^a-zA-Z0-9_-]/g, "_");
-    const replacePattern = new RegExp(`src=["'](?:\\.\\./)?images\\/${imageName.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&")}["']`, "g");
-    emailHtml = emailHtml.replace(replacePattern, `src="cid:${cidName}"`);
+    const replacePattern = new RegExp(`(?:\\.\\./)?images\\/${imageName.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&")}`, "g");
+    emailHtml = emailHtml.replace(replacePattern, `cid:${cidName}`);
 
     imageAttachments.push({
       filename: imageName,
