@@ -22,7 +22,7 @@ if (!process.env.EMAIL_PASSWORD) {
 // 2. Select Template
 // ---------------------------------------------------------------------------
 
-const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "intra_da_results.html";
+const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "synocubix_reproduced.html";
 const templateFilename = templateArg.endsWith(".html") ? templateArg : `${templateArg}.html`;
 const htmlFilePath = path.join(__dirname, "emails", templateFilename);
 
@@ -35,7 +35,7 @@ let rawHtml = fs.readFileSync(htmlFilePath, "utf-8");
 
 // Extract title from HTML if no subject is specified
 const titleMatch = rawHtml.match(/<title>([^<]+)<\/title>/i);
-const defaultSubject = titleMatch ? titleMatch[1].trim() : "The Cubing Club – DAU";
+const defaultSubject = titleMatch ? titleMatch[1].trim() : "🔥 Concours Cube Open 2026 - Registration Open 🔥";
 const emailSubject = process.env.EMAIL_SUBJECT || defaultSubject;
 
 // ---------------------------------------------------------------------------
@@ -77,13 +77,13 @@ detectedImages.forEach((imageName) => {
 // ---------------------------------------------------------------------------
 
 const recipients = [
-  // "hetulkadiya@gmail.com",
-  // "yashvipachani12@gmail.com",
-  "202511026@dau.acin", // Hetul
-  // "202401436@dau.ac.in", // Vatsal
+  "hetulkadiya@gmail.com",
+  "yashvipachani12@gmail.com",
+  // "202511026@dau.acin", // Hetul
+  "202401436@dau.ac.in", // Vatsal
   // "202403062@dau.ac.in", // Yashvi
   // "202501153@dau.ac.in", // Krishiv
-  // "premkundadia201@gmail.com",
+  "premkundadia201@gmail.com",
 ];
 
 // const recipients = [
