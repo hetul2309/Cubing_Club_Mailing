@@ -22,7 +22,7 @@ if (!process.env.EMAIL_PASSWORD) {
 // 2. Select Template
 // ---------------------------------------------------------------------------
 
-const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "synocubix_reproduced.html";
+const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "concours_26_invitation.html";
 const templateFilename = templateArg.endsWith(".html") ? templateArg : `${templateArg}.html`;
 const htmlFilePath = path.join(__dirname, "emails", templateFilename);
 
@@ -77,10 +77,10 @@ detectedImages.forEach((imageName) => {
 // ---------------------------------------------------------------------------
 
 const recipients = [
-  "hetulkadiya@gmail.com",
-  "yashvipachani12@gmail.com",
-  // "202511026@dau.acin", // Hetul
-  "202401436@dau.ac.in", // Vatsal
+  // "hetulkadiya@gmail.com",
+  // "yashvipachani12@gmail.com",
+  // "202511026@dau.ac.in", // Hetul
+  // "202401436@dau.ac.in", // Vatsal
   // "202403062@dau.ac.in", // Yashvi
   // "202501153@dau.ac.in", // Krishiv
   "premkundadia201@gmail.com",

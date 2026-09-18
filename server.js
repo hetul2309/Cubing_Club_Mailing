@@ -20,13 +20,13 @@ if (!process.env.EMAIL_PASSWORD) {
 }
 
 // ---------------------------------------------------------------------------
-// 2. Select Template (from command argument, .env, or default to intra_da_results.html)
+// 2. Select Template (from command argument, .env, or default to concours_26_invitation.html)
 //    Usage:
-//      node server.js                      --> sends emails/intra_da_results.html
-//      node server.js intra_da.html        --> sends emails/intra_da.html
+//      node server.js                             --> sends emails/concours_26_invitation.html
+//      node server.js workshop.html              --> sends emails/workshop.html
 // ---------------------------------------------------------------------------
 
-const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "intra_da_results.html";
+const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "concours_26_invitation.html";
 const templateFilename = templateArg.endsWith(".html") ? templateArg : `${templateArg}.html`;
 const htmlFilePath = path.join(__dirname, "emails", templateFilename);
 
