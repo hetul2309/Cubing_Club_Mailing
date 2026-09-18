@@ -65,6 +65,18 @@
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.8) !important;
         }
 
+        .hero-spacer {
+            height: 420px;
+        }
+
+        .equal-card {
+            min-height: 410px;
+        }
+
+        .step-card {
+            min-height: 185px;
+        }
+
         @media (max-width: 660px) {
             .icons-inner {
                 text-align: center;
@@ -124,26 +136,38 @@
                 padding-right: 14px !important;
             }
 
-            .col-half-mobile {
+            .mobile-stack-table,
+            .mobile-stack-table tbody,
+            .mobile-stack-table tr {
                 display: block !important;
                 width: 100% !important;
+            }
+
+            .col-half-mobile,
+            .col-step-item {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
                 padding-left: 0 !important;
                 padding-right: 0 !important;
-                margin-bottom: 16px !important;
+                padding-bottom: 14px !important;
+                box-sizing: border-box !important;
+            }
+
+            .equal-card {
+                min-height: auto !important;
+            }
+
+            .step-card {
+                min-height: auto !important;
             }
 
             .hero-spacer {
-                height: 420px;
+                height: 240px !important;
             }
 
             .hero-bg-wrapper {
-                padding: 35px 25px 35px 25px !important;
-            }
-
-            @media (max-width: 660px) {
-                .hero-spacer {
-                    height: 240px !important;
-                }
+                padding: 30px 14px !important;
             }
         }
     </style>
@@ -222,15 +246,16 @@
                                     <!-- Container Table with Rectangular Theme Background Image -->
                                     <table class="row-content stack" align="center" border="0" cellpadding="0"
                                         cellspacing="0" role="presentation"
-                                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #030512; background-image: linear-gradient(180deg, rgba(3, 5, 18, 0.75) 0%, rgba(3, 5, 18, 0.05) 15%, rgba(3, 5, 18, 0.05) 75%, rgba(3, 5, 18, 0.85) 100%), url('../images/concours_theme_image.png'); background-position: center center; background-repeat: no-repeat; background-size: cover; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.35); box-shadow: 0 0 35px rgba(168, 85, 247, 0.3); color: #ffffff; width: 640px; margin: 0 auto;"
-                                        width="640" background="../images/concours_theme_image.png">
+                                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #030512; background-image: linear-gradient(180deg, rgba(3, 5, 18, 0.75) 0%, rgba(3, 5, 18, 0.05) 15%, rgba(3, 5, 18, 0.05) 75%, rgba(3, 5, 18, 0.85) 100%), url('https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png'); background-position: center center; background-repeat: no-repeat; background-size: cover; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.35); box-shadow: 0 0 35px rgba(168, 85, 247, 0.3); color: #ffffff; width: 640px; margin: 0 auto;"
+                                        width="640"
+                                        background="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png">
                                         <tbody>
                                             <tr>
                                                 <td class="column column-1 hero-bg-wrapper" width="100%"
                                                     style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding: 40px 25px 40px 25px;">
                                                     <!--[if gte mso 9]>
                                                     <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:640px; height:800px;">
-                                                    <v:fill type="frame" src="../images/concours_theme_image.png" color="#030512" />
+                                                    <v:fill type="frame" src="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png" color="#030512" />
                                                     <v:textbox inset="0,0,0,0">
                                                     <![endif]-->
 
@@ -474,14 +499,14 @@
 
                                                     <!-- 2-Day Schedule Cards -->
                                                     <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                                        role="presentation"
+                                                        role="presentation" class="mobile-stack-table"
                                                         style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0 25px 25px 25px;">
                                                         <tr>
                                                             <!-- DAY 1 CARD -->
                                                             <td width="50%" class="col-half-mobile"
                                                                 style="padding: 8px; vertical-align: top;">
-                                                                <div
-                                                                    style="background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 14px; padding: 20px 18px; box-shadow: 0 0 20px rgba(168, 85, 247, 0.25); height: 100%;">
+                                                                <div class="equal-card"
+                                                                    style="background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 14px; padding: 20px 18px; box-shadow: 0 0 20px rgba(168, 85, 247, 0.25); min-height: 410px; box-sizing: border-box;">
                                                                     <div
                                                                         style="background: linear-gradient(135deg, #9333ea, #6b21a8); color: #ffffff; font-weight: 800; font-size: 15px; font-family: Montserrat, sans-serif; padding: 8px 12px; border-radius: 8px; text-align: center; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;">
                                                                         DAY 1 (Sat, Oct 31st)
@@ -489,48 +514,48 @@
                                                                     <div
                                                                         style="color: #f1f5f9; font-size: 14px; font-family: Montserrat, sans-serif; line-height: 1.8;">
                                                                         <div
-                                                                            style="padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #c084fc; font-weight: 700;">•</span>
                                                                             3x3x3 Blindfolded
                                                                         </div>
                                                                         <div
-                                                                            style="padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #c084fc; font-weight: 700;">•</span>
                                                                             5x5x5 Cube
                                                                         </div>
                                                                         <div
-                                                                            style="padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #c084fc; font-weight: 700;">•</span>
                                                                             4x4x4 Cube
                                                                         </div>
                                                                         <div
-                                                                            style="padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #c084fc; font-weight: 700;">•</span>
                                                                             Clock
                                                                         </div>
                                                                         <div
-                                                                            style="padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #c084fc; font-weight: 700;">•</span>
                                                                             Megaminx
                                                                         </div>
                                                                         <div
-                                                                            style="padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #c084fc; font-weight: 700;">•</span>
                                                                             Square-1
                                                                         </div>
                                                                         <div
-                                                                            style="padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #c084fc; font-weight: 700;">•</span>
                                                                             Skewb
                                                                         </div>
-                                                                        <div style="padding: 3px 0;"><span
+                                                                        <div style="padding: 4px 0;"><span
                                                                                 style="color: #c084fc; font-weight: 700;">•</span>
                                                                             3x3x3 Fewest Moves</div>
                                                                     </div>
@@ -539,8 +564,8 @@
                                                             <!-- DAY 2 CARD -->
                                                             <td width="50%" class="col-half-mobile"
                                                                 style="padding: 8px; vertical-align: top;">
-                                                                <div
-                                                                    style="background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(0, 240, 255, 0.4); border-radius: 14px; padding: 20px 18px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.25); height: 100%;">
+                                                                <div class="equal-card"
+                                                                    style="background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(0, 240, 255, 0.4); border-radius: 14px; padding: 20px 18px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.25); min-height: 410px; box-sizing: border-box;">
                                                                     <div
                                                                         style="background: linear-gradient(135deg, #00f0ff, #0284c7); color: #030512; font-weight: 900; font-size: 15px; font-family: Montserrat, sans-serif; padding: 8px 12px; border-radius: 8px; text-align: center; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;">
                                                                         DAY 2 (Sun, Nov 1st)
@@ -548,29 +573,29 @@
                                                                     <div
                                                                         style="color: #f1f5f9; font-size: 14px; font-family: Montserrat, sans-serif; line-height: 1.8;">
                                                                         <div
-                                                                            style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #00f0ff; font-weight: 700;">•</span>
                                                                             3x3x3 Cube (Main Event)
                                                                         </div>
                                                                         <div
-                                                                            style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #00f0ff; font-weight: 700;">•</span>
                                                                             2x2x2 Cube
                                                                         </div>
                                                                         <div
-                                                                            style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                                                            style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
                                                                             <span
                                                                                 style="color: #00f0ff; font-weight: 700;">•</span>
                                                                             Pyraminx
                                                                         </div>
-                                                                        <div style="padding: 6px 0;"><span
+                                                                        <div style="padding: 8px 0;"><span
                                                                                 style="color: #00f0ff; font-weight: 700;">•</span>
                                                                             3x3x3 One-Handed</div>
                                                                     </div>
                                                                     <div
-                                                                        style="margin-top: 25px; padding: 10px; background: rgba(0, 240, 255, 0.08); border-radius: 8px; border-left: 3px solid #00f0ff; font-size: 12px; color: #94a3b8;">
+                                                                        style="margin-top: 32px; padding: 12px; background: rgba(0, 240, 255, 0.08); border-radius: 8px; border-left: 3px solid #00f0ff; font-size: 12px; color: #94a3b8; line-height: 1.5;">
                                                                         🏆 <em>Grand Finals &amp; Prize Distribution on
                                                                             Day 2</em>
                                                                     </div>
@@ -639,13 +664,13 @@
 
                                                     <!-- 3-Step Guide Table -->
                                                     <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                                        role="presentation"
+                                                        role="presentation" class="mobile-stack-table"
                                                         style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0 25px 25px 25px;">
                                                         <tr>
-                                                            <td width="33.33%" class="col-half-mobile"
+                                                            <td width="33.33%" class="col-half-mobile col-step-item"
                                                                 style="padding: 6px; vertical-align: top;">
-                                                                <div
-                                                                    style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 240, 255, 0.35); border-radius: 12px; padding: 20px 14px; text-align: center; height: 100%;">
+                                                                <div class="step-card"
+                                                                    style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 240, 255, 0.35); border-radius: 12px; padding: 20px 14px; text-align: center; min-height: 185px; box-sizing: border-box;">
                                                                     <div
                                                                         style="background: #00f0ff; color: #030512; font-weight: 900; width: 32px; height: 32px; line-height: 32px; border-radius: 50%; margin: 0 auto 12px auto; font-family: Montserrat, sans-serif; font-size: 16px;">
                                                                         1</div>
@@ -653,15 +678,15 @@
                                                                         style="color: #ffffff; font-size: 15px; font-family: Montserrat, sans-serif; display: block; margin-bottom: 8px;">Sign
                                                                         Up</strong>
                                                                     <span
-                                                                        style="color: #94a3b8; font-size: 13px; font-family: Montserrat, sans-serif; line-height: 1.4;">Go
+                                                                        style="color: #94a3b8; font-size: 13px; font-family: Montserrat, sans-serif; line-height: 1.4; display: block;">Go
                                                                         to the WCA website & register your competitor
                                                                         account.</span>
                                                                 </div>
                                                             </td>
-                                                            <td width="33.33%" class="col-half-mobile"
+                                                            <td width="33.33%" class="col-half-mobile col-step-item"
                                                                 style="padding: 6px; vertical-align: top;">
-                                                                <div
-                                                                    style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(168, 85, 247, 0.35); border-radius: 12px; padding: 20px 14px; text-align: center; height: 100%;">
+                                                                <div class="step-card"
+                                                                    style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(168, 85, 247, 0.35); border-radius: 12px; padding: 20px 14px; text-align: center; min-height: 185px; box-sizing: border-box;">
                                                                     <div
                                                                         style="background: #a855f7; color: #ffffff; font-weight: 900; width: 32px; height: 32px; line-height: 32px; border-radius: 50%; margin: 0 auto 12px auto; font-family: Montserrat, sans-serif; font-size: 16px;">
                                                                         2</div>
@@ -669,15 +694,15 @@
                                                                         style="color: #ffffff; font-size: 15px; font-family: Montserrat, sans-serif; display: block; margin-bottom: 8px;">Select
                                                                         Events</strong>
                                                                     <span
-                                                                        style="color: #94a3b8; font-size: 13px; font-family: Montserrat, sans-serif; line-height: 1.4;">Fill
+                                                                        style="color: #94a3b8; font-size: 13px; font-family: Montserrat, sans-serif; line-height: 1.4; display: block;">Fill
                                                                         out the registration form & choose your
                                                                         events.</span>
                                                                 </div>
                                                             </td>
-                                                            <td width="33.33%" class="col-half-mobile"
+                                                            <td width="33.33%" class="col-half-mobile col-step-item"
                                                                 style="padding: 6px; vertical-align: top;">
-                                                                <div
-                                                                    style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 240, 255, 0.35); border-radius: 12px; padding: 20px 14px; text-align: center; height: 100%;">
+                                                                <div class="step-card"
+                                                                    style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 240, 255, 0.35); border-radius: 12px; padding: 20px 14px; text-align: center; min-height: 185px; box-sizing: border-box;">
                                                                     <div
                                                                         style="background: #00f0ff; color: #030512; font-weight: 900; width: 32px; height: 32px; line-height: 32px; border-radius: 50%; margin: 0 auto 12px auto; font-family: Montserrat, sans-serif; font-size: 16px;">
                                                                         3</div>
@@ -685,7 +710,7 @@
                                                                         style="color: #ffffff; font-size: 15px; font-family: Montserrat, sans-serif; display: block; margin-bottom: 8px;">Pay
                                                                         & Confirm</strong>
                                                                     <span
-                                                                        style="color: #94a3b8; font-size: 13px; font-family: Montserrat, sans-serif; line-height: 1.4;">Pay
+                                                                        style="color: #94a3b8; font-size: 13px; font-family: Montserrat, sans-serif; line-height: 1.4; display: block;">Pay
                                                                         the registration fee to secure your 1-of-100
                                                                         spot.</span>
                                                                 </div>
