@@ -80,6 +80,10 @@
                 border-radius: 0 !important;
                 border-left: none !important;
                 border-right: none !important;
+                aspect-ratio: 4 / 5 !important;
+                background-size: 100% 100% !important;
+                background-position: center center !important;
+                background-repeat: no-repeat !important;
             }
         }
 
@@ -90,13 +94,26 @@
                 padding-right: 16px !important;
             }
 
+            .hero-content-pad {
+                padding-top: 24px !important;
+                padding-bottom: 24px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+
             .hero-title {
                 font-size: 22px !important;
                 letter-spacing: 1px !important;
             }
 
             .hero-spacer {
-                height: 220px !important;
+                height: 260px !important;
+            }
+
+            .hero-desc {
+                font-size: 13px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 18px !important;
             }
 
             .col-half {
@@ -168,6 +185,20 @@
                 font-size: 18px !important;
             }
         }
+
+        /* Narrow mobile phones (e.g. width <= 380px) */
+        @media only screen and (max-width: 380px) {
+            .hero-spacer {
+                height: 220px !important;
+            }
+
+            .hero-content-pad {
+                padding-top: 20px !important;
+                padding-bottom: 20px !important;
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+            }
+        }
     </style>
 </head>
 
@@ -219,7 +250,7 @@
                                 background="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png"
                                 style="background-image: url('https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png'); background-color: #030512; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 12px; border: 1px solid rgba(168,85,247,0.35); overflow: hidden; max-width: 588px; width: 100%; margin: 0 auto;">
                                 <tr>
-                                    <td align="center" class="content-pad"
+                                    <td align="center" class="content-pad hero-content-pad"
                                         style="padding: 36px 24px 28px 24px; text-align: center; background-image: linear-gradient(180deg, rgba(3,5,18,0.78) 0%, rgba(3,5,18,0.05) 18%, rgba(3,5,18,0.05) 72%, rgba(3,5,18,0.9) 100%);">
                                         <p class="hero-title"
                                             style="margin: 0; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 32px; font-weight: 900; letter-spacing: 2px; line-height: 1.25; text-align: center; text-transform: uppercase; color: #ffffff; text-shadow: 0 0 25px rgba(255,255,255,0.4), 0 0 12px rgba(168,85,247,0.9);">
@@ -232,7 +263,7 @@
                                                     style="height: 350px; font-size: 1px; line-height: 1px;">&nbsp;</td>
                                             </tr>
                                         </table>
-                                        <p
+                                        <p class="hero-desc"
                                             style="margin: 0 0 22px 0; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 15px; font-weight: 500; line-height: 1.6; text-align: center; color: #f1f5f9; text-shadow: 0 2px 6px rgba(0,0,0,0.95);">
                                             The cubes are calling, and it&#39;s time to answer! From lightning-fast
                                             solves to personal triumphs, push your limits and compete with the best
