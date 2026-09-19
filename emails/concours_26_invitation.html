@@ -14,11 +14,40 @@
 
         html,
         body {
-            margin: 0 !important;
+            margin: 0 auto !important;
             padding: 0 !important;
             width: 100% !important;
+            max-width: 100% !important;
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
+            overflow-x: hidden !important;
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        /* Desktop multi-column padding (above mobile threshold) */
+        @media only screen and (min-width: 641px) {
+            .col-half-1 {
+                padding: 0 6px 0 0 !important;
+            }
+            .col-half-2 {
+                padding: 0 0 0 6px !important;
+            }
+            .col-third-1 {
+                padding: 0 5px 0 0 !important;
+            }
+            .col-third-2 {
+                padding: 0 2px !important;
+            }
+            .col-third-3 {
+                padding: 0 0 0 5px !important;
+            }
         }
 
         table,
@@ -447,8 +476,8 @@
               <table width="572" align="center" cellpadding="0" cellspacing="0" border="0"><tr>
               <td width="286" valign="top" style="padding: 0 6px 0 0;">
               <![endif]-->
-                            <div class="col-half"
-                                style="display: inline-block; width: 48%; max-width: 280px; vertical-align: top; padding: 0 6px 0 0; box-sizing: border-box;">
+                            <div class="col-half col-half-1"
+                                style="display: inline-block; width: 48%; max-width: 280px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="schedule-card"
                                     style="background-color: #0f172a; border: 1px solid rgba(168,85,247,0.4); border-radius: 14px; min-height: 360px; width: 100%; box-sizing: border-box;">
@@ -524,8 +553,8 @@
                             <!--[if (gte mso 9)|(IE)]>
               </td><td width="286" valign="top" style="padding: 0 0 0 6px;">
               <![endif]-->
-                            <div class="col-half col-half-last"
-                                style="display: inline-block; width: 48%; max-width: 280px; vertical-align: top; padding: 0 0 0 6px; box-sizing: border-box;">
+                            <div class="col-half col-half-2 col-half-last"
+                                style="display: inline-block; width: 48%; max-width: 280px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="schedule-card"
                                     style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.4); border-radius: 14px; min-height: 360px; width: 100%; box-sizing: border-box;">
@@ -603,8 +632,8 @@
               <table width="572" align="center" cellpadding="0" cellspacing="0" border="0"><tr>
               <td width="190" valign="top" style="padding: 0 4px 0 0;">
               <![endif]-->
-                            <div class="col-third"
-                                style="display: inline-block; width: 31%; max-width: 182px; vertical-align: top; padding: 0 5px 0 0; box-sizing: border-box;">
+                            <div class="col-third col-third-1"
+                                style="display: inline-block; width: 31%; max-width: 182px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="step-card"
                                     style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.35); border-radius: 12px; min-height: 190px; width: 100%; box-sizing: border-box;">
@@ -626,8 +655,8 @@
                             <!--[if (gte mso 9)|(IE)]>
               </td><td width="190" valign="top" style="padding: 0 2px;">
               <![endif]-->
-                            <div class="col-third"
-                                style="display: inline-block; width: 31%; max-width: 182px; vertical-align: top; padding: 0 2px; box-sizing: border-box;">
+                            <div class="col-third col-third-2"
+                                style="display: inline-block; width: 31%; max-width: 182px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="step-card"
                                     style="background-color: #0f172a; border: 1px solid rgba(168,85,247,0.35); border-radius: 12px; min-height: 190px; width: 100%; box-sizing: border-box;">
@@ -649,8 +678,8 @@
                             <!--[if (gte mso 9)|(IE)]>
               </td><td width="190" valign="top" style="padding: 0 0 0 4px;">
               <![endif]-->
-                            <div class="col-third col-third-last"
-                                style="display: inline-block; width: 31%; max-width: 182px; vertical-align: top; padding: 0 0 0 5px; box-sizing: border-box;">
+                            <div class="col-third col-third-3 col-third-last"
+                                style="display: inline-block; width: 31%; max-width: 182px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="step-card"
                                     style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.35); border-radius: 12px; min-height: 190px; width: 100%; box-sizing: border-box;">
