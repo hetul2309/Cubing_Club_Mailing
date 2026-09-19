@@ -47,7 +47,8 @@
             text-decoration: inherit !important;
         }
 
-        @media only screen and (max-width: 620px) {
+        /* Mobile and iPad / Tablet adjustments (up to 1024px) */
+        @media only screen and (max-width: 1024px) {
             .outer-wrapper {
                 padding: 0 !important;
             }
@@ -56,8 +57,29 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 border-radius: 0 !important;
+                border-left: none !important;
+                border-right: none !important;
             }
 
+            .logos-td {
+                border-radius: 0 !important;
+            }
+
+            .hero-td {
+                padding: 0 !important;
+            }
+
+            .hero-table {
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: 0 !important;
+                border-left: none !important;
+                border-right: none !important;
+            }
+        }
+
+        /* Mobile phones layout stacking */
+        @media only screen and (max-width: 620px) {
             .content-pad {
                 padding-left: 16px !important;
                 padding-right: 16px !important;
@@ -141,10 +163,11 @@
 
                     <!-- ROW 1: LOGOS -->
                     <tr>
-                        <td align="center" bgcolor="#000000"
-                            style="background-color: #000000; padding: 24px 20px 18px 20px; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+                        <td class="logos-td" align="center" bgcolor="#000000"
+                            background="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/black_bg.png"
+                            style="background-image: url('https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/black_bg.png'); background-color: #000000; background-size: cover; background-position: center center; background-repeat: no-repeat; padding: 24px 20px 18px 20px; border-top-left-radius: 16px; border-top-right-radius: 16px;">
                             <table role="presentation" cellpadding="0" cellspacing="0" border="0"
-                                style="margin: 0 auto; background-color: #000000;">
+                                style="margin: 0 auto; background: transparent;">
                                 <tr>
                                     <td align="center" style="padding: 0 22px;">
                                         <img src="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/wca_logo.png"
@@ -163,14 +186,14 @@
 
                     <!-- ROW 2: HERO BACKGROUND IMAGE -->
                     <tr>
-                        <td align="center" bgcolor="#030512"
+                        <td class="hero-td" align="center" bgcolor="#030512"
                             style="background-color: #030512; padding: 0 16px 16px 16px;">
                             <!--[if gte mso 9]>
               <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:588px; height:540px; border-radius:12px;">
               <v:fill type="frame" src="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png" color="#030512" />
               <v:textbox inset="0,0,0,0" style="mso-fit-shape-to-text:true">
               <![endif]-->
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                            <table class="hero-table" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                 background="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png"
                                 style="background-image: url('https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png'); background-color: #030512; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 12px; border: 1px solid rgba(168,85,247,0.35); overflow: hidden; max-width: 588px; width: 100%;">
                                 <tr>
