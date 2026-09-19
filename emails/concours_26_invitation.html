@@ -31,24 +31,6 @@
             height: 0 !important;
         }
 
-        /* Desktop multi-column padding (above mobile threshold) */
-        @media only screen and (min-width: 641px) {
-            .col-half-1 {
-                padding: 0 6px 0 0 !important;
-            }
-            .col-half-2 {
-                padding: 0 0 0 6px !important;
-            }
-            .col-third-1 {
-                padding: 0 5px 0 0 !important;
-            }
-            .col-third-2 {
-                padding: 0 2px !important;
-            }
-            .col-third-3 {
-                padding: 0 0 0 5px !important;
-            }
-        }
 
         table,
         td {
@@ -153,8 +135,10 @@
             .details-row {
                 display: block !important;
                 width: 100% !important;
+                max-width: 100% !important;
                 box-sizing: border-box !important;
-                margin: 0 auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
 
             .col-detail {
@@ -178,7 +162,10 @@
                 display: block !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                margin: 0 auto 16px auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                margin-top: 0 !important;
+                margin-bottom: 16px !important;
                 padding: 0 !important;
                 box-sizing: border-box !important;
             }
@@ -192,6 +179,8 @@
                 max-width: 100% !important;
                 min-height: auto !important;
                 box-sizing: border-box !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
 
             /* How To Register 3 Divs Stacking */
@@ -199,7 +188,10 @@
                 display: block !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                margin: 0 auto 14px auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                margin-top: 0 !important;
+                margin-bottom: 14px !important;
                 padding: 0 !important;
                 box-sizing: border-box !important;
             }
@@ -213,13 +205,16 @@
                 max-width: 100% !important;
                 min-height: auto !important;
                 box-sizing: border-box !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
 
             /* Participation Limit Div / Card */
             .limit-card {
                 width: 100% !important;
                 max-width: 100% !important;
-                margin: 0 auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
                 box-sizing: border-box !important;
             }
 
@@ -281,8 +276,8 @@
         /* Narrow mobile phones (e.g. width <= 380px) */
         @media only screen and (max-width: 380px) {
             .content-pad {
-                padding-left: 12px !important;
-                padding-right: 12px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
                 box-sizing: border-box !important;
             }
 
@@ -305,6 +300,41 @@
             .limit-title {
                 font-size: 16px !important;
             }
+
+            .limit-card-td {
+                padding: 20px 10px !important;
+            }
+
+            .action-btn {
+                width: 210px !important;
+                max-width: 100% !important;
+            }
+        }
+
+        /* Ultra-narrow mobile / Gmail shrunk panes (e.g. width <= 340px down to 280px) */
+        @media only screen and (max-width: 340px) {
+            .content-pad {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+                box-sizing: border-box !important;
+            }
+
+            .limit-card-td {
+                padding: 16px 8px !important;
+            }
+
+            .action-btn {
+                width: 190px !important;
+                max-width: 100% !important;
+            }
+
+            .col-detail {
+                padding: 10px 8px !important;
+            }
+
+            .hero-title {
+                font-size: 19px !important;
+            }
         }
     </style>
 </head>
@@ -317,7 +347,7 @@
         <tr>
             <td align="center">
 
-                <table role="presentation" width="620" cellpadding="0" cellspacing="0" border="0"
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                     class="email-container"
                     style="max-width: 620px; width: 100%; background-color: #030512; border-radius: 16px; overflow: hidden; border: 1px solid rgba(168,85,247,0.25); box-shadow: 0 0 40px rgba(168,85,247,0.15);">
 
@@ -353,9 +383,10 @@
               <v:fill type="frame" src="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png" color="#030512" />
               <v:textbox inset="0,0,0,0" style="mso-fit-shape-to-text:true">
               <![endif]-->
-                            <table class="hero-table" role="presentation" width="100%" align="center" cellpadding="0" cellspacing="0" border="0"
-                                background="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png"
-                                style="background-image: url('https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image.png'); background-color: #030512; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 12px; border: 1px solid rgba(168,85,247,0.35); overflow: hidden; max-width: 588px; width: 100%; margin: 0 auto;">
+                            <table class="hero-table" role="presentation" width="100%" align="center" cellpadding="0"
+                                cellspacing="0" border="0"
+                                background="https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image_2.jpeg"
+                                style="background-image: url('https://raw.githubusercontent.com/hetul2309/Cubing_Club_Mailing/main/images/concours_theme_image_2.jpeg'); background-color: #030512; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 12px; border: 1px solid rgba(168,85,247,0.35); overflow: hidden; max-width: 588px; width: 100%; margin: 0 auto;">
                                 <tr>
                                     <td align="center" class="content-pad hero-content-pad"
                                         style="padding: 36px 24px 28px 24px; text-align: center; background-image: linear-gradient(180deg, rgba(3,5,18,0.78) 0%, rgba(3,5,18,0.05) 18%, rgba(3,5,18,0.05) 72%, rgba(3,5,18,0.9) 100%);">
@@ -363,8 +394,8 @@
                                             style="margin: 0; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 32px; font-weight: 900; letter-spacing: 2px; line-height: 1.25; text-align: center; text-transform: uppercase; color: #ffffff; text-shadow: 0 0 25px rgba(255,255,255,0.4), 0 0 12px rgba(168,85,247,0.9);">
                                             CONCOURS CUBE OPEN 2026
                                         </p>
-                                        <table role="presentation" width="100%" align="center" cellpadding="0" cellspacing="0"
-                                            border="0" style="margin: 0 auto;">
+                                        <table role="presentation" width="100%" align="center" cellpadding="0"
+                                            cellspacing="0" border="0" style="margin: 0 auto;">
                                             <tr>
                                                 <td class="hero-spacer" height="350"
                                                     style="height: 350px; font-size: 1px; line-height: 1px;">&nbsp;</td>
@@ -378,8 +409,8 @@
                                             <strong style="color: #00f0ff;">Let&#39;s turn up the speed!
                                                 &#9889;</strong>
                                         </p>
-                                        <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0"
-                                            class="hero-btn-table"
+                                        <table role="presentation" align="center" cellpadding="0" cellspacing="0"
+                                            border="0" class="hero-btn-table"
                                             style="margin: 0 auto; text-align: center;">
                                             <tr>
                                                 <td align="center" bgcolor="#7c3aed"
@@ -425,40 +456,46 @@
                             </p>
                             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                 class="details-table"
-                                style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.4); border-radius: 14px; margin-bottom: 24px; width: 100%; box-sizing: border-box;">
-                                <tr class="details-row">
-                                    <td class="col-detail" align="center" width="33%"
-                                        style="padding: 16px 10px; text-align: center; vertical-align: top; box-sizing: border-box;">
+                                style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.4); border-radius: 14px; margin-bottom: 24px; width: 100%; max-width: 100%; box-sizing: border-box;">
+                                <tr>
+                                    <td class="col-detail" align="center" width="100%"
+                                        style="padding: 16px 14px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.12); box-sizing: border-box;">
                                         <p
-                                            style="margin: 0 0 6px 0; color: #00f0ff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase;">
+                                            style="margin: 0 0 6px 0; color: #00f0ff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
                                             &#128197; DATE</p>
                                         <p
-                                            style="margin: 0; color: #ffffff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 13px; font-weight: 600; line-height: 1.4;">
-                                            Saturday, Oct 31st &amp;<br>Sunday, Nov 1st, 2026</p>
+                                            style="margin: 0; color: #ffffff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 14px; font-weight: 600; line-height: 1.4;">
+                                            Saturday, Oct 31st &amp; Sunday, Nov 1st, 2026</p>
                                     </td>
-                                    <td class="col-detail" align="center" width="34%"
-                                        style="padding: 16px 10px; text-align: center; vertical-align: top; border-left: 1px solid rgba(255,255,255,0.12); border-right: 1px solid rgba(255,255,255,0.12); box-sizing: border-box;">
+                                </tr>
+                                <tr>
+                                    <td class="col-detail" align="center" width="100%"
+                                        style="padding: 16px 14px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.12); box-sizing: border-box;">
                                         <p
-                                            style="margin: 0 0 6px 0; color: #c084fc; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase;">
+                                            style="margin: 0 0 6px 0; color: #c084fc; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
                                             &#128205; VENUE</p>
                                         <p
-                                            style="margin: 0; color: #ffffff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 13px; font-weight: 600; line-height: 1.4;">
-                                            DAU (Formerly DA-IICT),<br>Gandhinagar</p>
+                                            style="margin: 0; color: #ffffff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 14px; font-weight: 600; line-height: 1.4;">
+                                            DAU (Formerly DA-IICT), Gandhinagar</p>
                                     </td>
-                                    <td class="col-detail col-detail-last" align="center" width="33%"
-                                        style="padding: 16px 10px; text-align: center; vertical-align: top; box-sizing: border-box;">
+                                </tr>
+                                <tr>
+                                    <td class="col-detail col-detail-last" align="center" width="100%"
+                                        style="padding: 16px 14px; text-align: center; box-sizing: border-box;">
                                         <p
-                                            style="margin: 0 0 6px 0; color: #00f0ff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase;">
+                                            style="margin: 0 0 6px 0; color: #00f0ff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
                                             &#128101; LIMIT</p>
                                         <p
-                                            style="margin: 0; color: #ffffff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 13px; font-weight: 600; line-height: 1.4;">
-                                            100 Competitors<br>(Strict Capacity)</p>
+                                            style="margin: 0; color: #ffffff; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 14px; font-weight: 600; line-height: 1.4;">
+                                            100 Competitors (Strict Capacity)</p>
                                     </td>
                                 </tr>
                             </table>
-                            <div class="responsive-divider-wrap" style="max-width: 480px; width: 100%; margin: 0 auto 24px auto;">
-                                <img class="responsive-divider-img" src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/1461/vgd_divider2.png"
-                                    alt="Divider" width="480" height="auto"
+                            <div class="responsive-divider-wrap"
+                                style="max-width: 480px; width: 100%; margin: 0 auto 24px auto;">
+                                <img class="responsive-divider-img"
+                                    src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/1461/vgd_divider2.png"
+                                    alt="Divider" width="100%" height="auto"
                                     style="display: block; width: 100%; max-width: 100%; height: auto; border: 0; margin: 0 auto;">
                             </div>
                         </td>
@@ -472,15 +509,11 @@
                                 style="margin: 0 0 16px 0; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 24px; font-weight: 800; line-height: 1.4; text-align: center; text-transform: uppercase; letter-spacing: 2px; color: #ffffff;">
                                 &#128197; <span style="color: #00f0ff;">EVENT</span> SCHEDULE
                             </p>
-                            <!--[if (gte mso 9)|(IE)]>
-              <table width="572" align="center" cellpadding="0" cellspacing="0" border="0"><tr>
-              <td width="286" valign="top" style="padding: 0 6px 0 0;">
-              <![endif]-->
                             <div class="col-half col-half-1"
-                                style="display: inline-block; width: 48%; max-width: 280px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
+                                style="display: block; width: 100%; max-width: 100%; margin: 0 auto 16px auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="schedule-card"
-                                    style="background-color: #0f172a; border: 1px solid rgba(168,85,247,0.4); border-radius: 14px; min-height: 360px; width: 100%; box-sizing: border-box;">
+                                    style="background-color: #0f172a; border: 1px solid rgba(168,85,247,0.4); border-radius: 14px; width: 100%; box-sizing: border-box;">
                                     <tr>
                                         <td align="center" style="padding: 18px 16px;">
                                             <div
@@ -550,14 +583,11 @@
                                     </tr>
                                 </table>
                             </div>
-                            <!--[if (gte mso 9)|(IE)]>
-              </td><td width="286" valign="top" style="padding: 0 0 0 6px;">
-              <![endif]-->
                             <div class="col-half col-half-2 col-half-last"
-                                style="display: inline-block; width: 48%; max-width: 280px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
+                                style="display: block; width: 100%; max-width: 100%; margin: 0 auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="schedule-card"
-                                    style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.4); border-radius: 14px; min-height: 360px; width: 100%; box-sizing: border-box;">
+                                    style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.4); border-radius: 14px; width: 100%; box-sizing: border-box;">
                                     <tr>
                                         <td align="center" style="padding: 18px 16px;">
                                             <div
@@ -609,12 +639,11 @@
                                     </tr>
                                 </table>
                             </div>
-                            <!--[if (gte mso 9)|(IE)]>
-              </td></tr></table>
-              <![endif]-->
-                            <div class="responsive-divider-wrap" style="max-width: 620px; width: 100%; margin: 24px auto 0 auto;">
-                                <img class="responsive-divider-img" src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/1461/vgd_divider4.png"
-                                    alt="Divider" width="620" height="auto"
+                            <div class="responsive-divider-wrap"
+                                style="max-width: 620px; width: 100%; margin: 24px auto 0 auto;">
+                                <img class="responsive-divider-img"
+                                    src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/1461/vgd_divider4.png"
+                                    alt="Divider" width="100%" height="auto"
                                     style="display: block; width: 100%; max-width: 100%; height: auto; border: 0; margin: 0 auto;">
                             </div>
                         </td>
@@ -628,79 +657,66 @@
                                 style="margin: 0 0 16px 0; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 24px; font-weight: 800; line-height: 1.4; text-align: center; text-transform: uppercase; letter-spacing: 2px; color: #ffffff;">
                                 HOW TO <span style="color: #c084fc;">REGISTER?</span>
                             </p>
-                            <!--[if (gte mso 9)|(IE)]>
-              <table width="572" align="center" cellpadding="0" cellspacing="0" border="0"><tr>
-              <td width="190" valign="top" style="padding: 0 4px 0 0;">
-              <![endif]-->
                             <div class="col-third col-third-1"
-                                style="display: inline-block; width: 31%; max-width: 182px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
+                                style="display: block; width: 100%; max-width: 100%; margin: 0 auto 14px auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="step-card"
-                                    style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.35); border-radius: 12px; min-height: 190px; width: 100%; box-sizing: border-box;">
+                                    style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.35); border-radius: 12px; width: 100%; box-sizing: border-box;">
                                     <tr>
-                                        <td align="center" style="padding: 18px 12px; text-align: center;">
+                                        <td align="center" style="padding: 18px 16px; text-align: center;">
                                             <div
                                                 style="background-color: #00f0ff; color: #030512; font-weight: 900; width: 32px; height: 32px; line-height: 32px; border-radius: 50%; margin: 0 auto 12px auto; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 16px;">
                                                 1</div>
                                             <strong
-                                                style="display: block; color: #ffffff; font-size: 14px; font-family: Montserrat, Trebuchet MS, sans-serif; margin-bottom: 8px; text-align: center;">Sign
+                                                style="display: block; color: #ffffff; font-size: 15px; font-family: Montserrat, Trebuchet MS, sans-serif; margin-bottom: 8px; text-align: center;">Sign
                                                 Up</strong>
                                             <span
-                                                style="display: block; color: #94a3b8; font-size: 12px; font-family: Montserrat, Trebuchet MS, sans-serif; line-height: 1.5; text-align: center;">Go
+                                                style="display: block; color: #94a3b8; font-size: 13px; font-family: Montserrat, Trebuchet MS, sans-serif; line-height: 1.5; text-align: center;">Go
                                                 to the WCA website &amp; register your competitor account.</span>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            <!--[if (gte mso 9)|(IE)]>
-              </td><td width="190" valign="top" style="padding: 0 2px;">
-              <![endif]-->
                             <div class="col-third col-third-2"
-                                style="display: inline-block; width: 31%; max-width: 182px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
+                                style="display: block; width: 100%; max-width: 100%; margin: 0 auto 14px auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="step-card"
-                                    style="background-color: #0f172a; border: 1px solid rgba(168,85,247,0.35); border-radius: 12px; min-height: 190px; width: 100%; box-sizing: border-box;">
+                                    style="background-color: #0f172a; border: 1px solid rgba(168,85,247,0.35); border-radius: 12px; width: 100%; box-sizing: border-box;">
                                     <tr>
-                                        <td align="center" style="padding: 18px 12px; text-align: center;">
+                                        <td align="center" style="padding: 18px 16px; text-align: center;">
                                             <div
                                                 style="background-color: #a855f7; color: #ffffff; font-weight: 900; width: 32px; height: 32px; line-height: 32px; border-radius: 50%; margin: 0 auto 12px auto; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 16px;">
                                                 2</div>
                                             <strong
-                                                style="display: block; color: #ffffff; font-size: 14px; font-family: Montserrat, Trebuchet MS, sans-serif; margin-bottom: 8px; text-align: center;">Select
+                                                style="display: block; color: #ffffff; font-size: 15px; font-family: Montserrat, Trebuchet MS, sans-serif; margin-bottom: 8px; text-align: center;">Select
                                                 Events</strong>
                                             <span
-                                                style="display: block; color: #94a3b8; font-size: 12px; font-family: Montserrat, Trebuchet MS, sans-serif; line-height: 1.5; text-align: center;">Fill
+                                                style="display: block; color: #94a3b8; font-size: 13px; font-family: Montserrat, Trebuchet MS, sans-serif; line-height: 1.5; text-align: center;">Fill
                                                 out the registration form &amp; choose all your events.</span>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            <!--[if (gte mso 9)|(IE)]>
-              </td><td width="190" valign="top" style="padding: 0 0 0 4px;">
-              <![endif]-->
                             <div class="col-third col-third-3 col-third-last"
-                                style="display: inline-block; width: 31%; max-width: 182px; vertical-align: top; margin: 0 auto; box-sizing: border-box;">
+                                style="display: block; width: 100%; max-width: 100%; margin: 0 auto; box-sizing: border-box;">
                                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                                     class="step-card"
-                                    style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.35); border-radius: 12px; min-height: 190px; width: 100%; box-sizing: border-box;">
+                                    style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.35); border-radius: 12px; width: 100%; box-sizing: border-box;">
                                     <tr>
-                                        <td align="center" style="padding: 18px 12px; text-align: center;">
+                                        <td align="center" style="padding: 18px 16px; text-align: center;">
                                             <div
                                                 style="background-color: #00f0ff; color: #030512; font-weight: 900; width: 32px; height: 32px; line-height: 32px; border-radius: 50%; margin: 0 auto 12px auto; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 16px;">
                                                 3</div>
                                             <strong
-                                                style="display: block; color: #ffffff; font-size: 14px; font-family: Montserrat, Trebuchet MS, sans-serif; margin-bottom: 8px; text-align: center;">Pay
+                                                style="display: block; color: #ffffff; font-size: 15px; font-family: Montserrat, Trebuchet MS, sans-serif; margin-bottom: 8px; text-align: center;">Pay
                                                 &amp; Confirm</strong>
                                             <span
-                                                style="display: block; color: #94a3b8; font-size: 12px; font-family: Montserrat, Trebuchet MS, sans-serif; line-height: 1.5; text-align: center;">Pay
+                                                style="display: block; color: #94a3b8; font-size: 13px; font-family: Montserrat, Trebuchet MS, sans-serif; line-height: 1.5; text-align: center;">Pay
                                                 the registration fee to secure your 1-of-100 spot.</span>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            <!--[if (gte mso 9)|(IE)]>
-              </td></tr></table>
-              <![endif]-->
                             <p class="tagline-text"
                                 style="margin: 28px 0 0 0; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 24px; font-weight: 900; letter-spacing: 2px; line-height: 1.3; text-align: center; text-transform: uppercase; color: #ffffff;">
                                 TURN FAST, <span style="color: #00f0ff;">THINK FASTER!</span>
@@ -716,7 +732,8 @@
                                 class="limit-card"
                                 style="background-color: #0f172a; border: 1px solid rgba(0,240,255,0.4); border-radius: 16px; width: 100%; box-sizing: border-box;">
                                 <tr>
-                                    <td align="center" class="limit-card-td" style="padding: 28px 22px; text-align: center; box-sizing: border-box;">
+                                    <td align="center" class="limit-card-td"
+                                        style="padding: 28px 22px; text-align: center; box-sizing: border-box;">
                                         <p class="limit-title"
                                             style="margin: 0 0 10px 0; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 22px; font-weight: 900; line-height: 1.3; text-transform: uppercase; text-align: center; color: #ffffff;">
                                             PARTICIPANT LIMIT: <span style="color: #00f0ff;">100 COMPETITORS</span>
@@ -732,7 +749,8 @@
                     <![endif]-->
                                         <div class="col-btn"
                                             style="display: inline-block; vertical-align: middle; padding: 8px 8px; box-sizing: border-box;">
-                                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
+                                            <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                                                style="margin: 0 auto;">
                                                 <tr>
                                                     <td align="center" bgcolor="#7c3aed"
                                                         style="background-color: #7c3aed; border-radius: 8px;">
@@ -741,7 +759,8 @@
                             <v:stroke dashstyle="Solid" weight="0px" color="#7c3aed"/><w:anchorlock/>
                             <v:textbox inset="0px,0px,0px,0px"><center dir="false" style="color:#ffffff;font-family:Montserrat,sans-serif;font-size:13px;font-weight:800;">
                             <![endif]-->
-                                                        <a class="action-btn" href="https://www.worldcubeassociation.org/competitions/ConcoursCubeOpen2026/register"
+                                                        <a class="action-btn"
+                                                            href="https://www.worldcubeassociation.org/competitions/ConcoursCubeOpen2026/register"
                                                             target="_blank"
                                                             style="display: inline-block; width: 220px; box-sizing: border-box; padding: 13px 16px; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 13px; font-weight: 800; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; text-align: center; background-color: #7c3aed; border-radius: 8px; background-image: linear-gradient(135deg, #9333ea 0%, #6366f1 100%);">
                                                             REGISTRATION LINK
@@ -756,7 +775,8 @@
                     <![endif]-->
                                         <div class="col-btn col-btn-last"
                                             style="display: inline-block; vertical-align: middle; padding: 8px 8px; box-sizing: border-box;">
-                                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
+                                            <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                                                style="margin: 0 auto;">
                                                 <tr>
                                                     <td align="center" bgcolor="#00f0ff"
                                                         style="background-color: #00f0ff; border-radius: 8px;">
@@ -765,7 +785,8 @@
                             <v:stroke dashstyle="Solid" weight="0px" color="#00f0ff"/><w:anchorlock/>
                             <v:textbox inset="0px,0px,0px,0px"><center dir="false" style="color:#030512;font-family:Montserrat,sans-serif;font-size:13px;font-weight:800;">
                             <![endif]-->
-                                                        <a class="action-btn" href="https://forms.gle/BbZmLhdCWtmSBWcz6" target="_blank"
+                                                        <a class="action-btn" href="https://forms.gle/BbZmLhdCWtmSBWcz6"
+                                                            target="_blank"
                                                             style="display: inline-block; width: 220px; box-sizing: border-box; padding: 13px 16px; font-family: Montserrat, Trebuchet MS, sans-serif; font-size: 13px; font-weight: 800; color: #030512; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; text-align: center; background-color: #00f0ff; border-radius: 8px;">
                                                             PAYMENT LINK
                                                         </a>
@@ -787,9 +808,11 @@
                     <tr>
                         <td align="center" bgcolor="#030512" class="content-pad"
                             style="background-color: #030512; padding: 0 24px 24px 24px; text-align: center;">
-                            <div class="responsive-divider-wrap" style="max-width: 320px; width: 100%; margin: 0 auto 20px auto;">
-                                <img class="responsive-divider-img" src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/1461/vgd_divider3.png"
-                                    alt="Divider" width="320" height="auto"
+                            <div class="responsive-divider-wrap"
+                                style="max-width: 320px; width: 100%; margin: 0 auto 20px auto;">
+                                <img class="responsive-divider-img"
+                                    src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/1461/vgd_divider3.png"
+                                    alt="Divider" width="100%" height="auto"
                                     style="display: block; width: 100%; max-width: 100%; height: auto; border: 0; margin: 0 auto;">
                             </div>
                             <p

@@ -78,14 +78,14 @@ detectedImages.forEach((imageName) => {
 
 const recipients = [
   // "hetulkadiya@gmail.com",
-  // "yashvipachani12@gmail.com",
+  "yashvipachani12@gmail.com",
   // "202511026@dau.ac.in", // Hetul
   // "202401436@dau.ac.in", // Vatsal
   // "202403062@dau.ac.in", // Yashvi
   // "202501153@dau.ac.in", // Krishiv
-  // "premkundadia201@gmail.com",
-  // "tanvinakum79@gmail.com",
-  // "VatsalMori2005@gmail.com"
+  "premkundadia201@gmail.com",
+  "tanvinakum79@gmail.com",
+  "VatsalMori2005@gmail.com"
 ];
 
 // const recipients = [
