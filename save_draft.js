@@ -22,7 +22,7 @@ if (!process.env.EMAIL_PASSWORD) {
 // 2. Select Template
 // ---------------------------------------------------------------------------
 
-const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "concours_26_invitation.html";
+const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "navratri_mosaic.html";
 const templateFilename = templateArg.endsWith(".html") ? templateArg : `${templateArg}.html`;
 const htmlFilePath = path.join(__dirname, "emails", templateFilename);
 
@@ -35,7 +35,7 @@ let rawHtml = fs.readFileSync(htmlFilePath, "utf-8");
 
 // Extract title from HTML if no subject is specified
 const titleMatch = rawHtml.match(/<title>([^<]+)<\/title>/i);
-const defaultSubject = titleMatch ? titleMatch[1].trim() : "🔥 Concours Cube Open 2026 - Registration Open 🔥";
+const defaultSubject = titleMatch ? titleMatch[1].trim() : "Be Part of Our Navratri Mosaic Creation!";
 const emailSubject = process.env.EMAIL_SUBJECT || defaultSubject;
 
 // ---------------------------------------------------------------------------

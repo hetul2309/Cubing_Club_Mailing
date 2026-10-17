@@ -20,13 +20,13 @@ if (!process.env.EMAIL_PASSWORD) {
 }
 
 // ---------------------------------------------------------------------------
-// 2. Select Template (from command argument, .env, or default to concours_26_invitation.html)
+// 2. Select Template (from command argument, .env, or default to navratri_mosaic.html)
 //    Usage:
-//      node server.js                             --> sends emails/concours_26_invitation.html
+//      node server.js                             --> sends emails/navratri_mosaic.html
 //      node server.js workshop.html              --> sends emails/workshop.html
 // ---------------------------------------------------------------------------
 
-const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "concours_26_invitation.html";
+const templateArg = process.argv[2] || process.env.EMAIL_TEMPLATE || "navratri_mosaic.html";
 const templateFilename = templateArg.endsWith(".html") ? templateArg : `${templateArg}.html`;
 const htmlFilePath = path.join(__dirname, "emails", templateFilename);
 
