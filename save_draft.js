@@ -83,6 +83,7 @@ const recipients = [
   // "202401436@dau.ac.in", // Vatsal
   // "202403062@dau.ac.in", // Yashvi
   // "202501153@dau.ac.in", // Krishiv
+  // "202501139@dau.ac.in", //Prem
   // "premkundadia201@gmail.com",
   // "tanvinakum79@gmail.com",
   // "VatsalMori2005@gmail.com"
