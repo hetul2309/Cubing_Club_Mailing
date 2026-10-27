@@ -109,11 +109,11 @@ const transporter = nodemailer.createTransport({
 const recipients = [
   "hetulkadiya@gmail.com",
   // "yashvipachani12@gmail.com",
-  //"202511026@dau.ac.in", // Hetul
-  "202401436@dau.ac.in", // Vatsal
-  "202403062@dau.ac.in", // Yashvi
-  "202501153@dau.ac.in", // Krishiv
-  "202501139@dau.ac.in", //Prem
+  // "202511026@dau.ac.in", // Hetul
+  // "202401436@dau.ac.in", // Vatsal
+  // "202403062@dau.ac.in", // Yashvi
+  // "202501153@dau.ac.in", // Krishiv
+  // "202501139@dau.ac.in", //Prem
   // "premkundadia201@gmail.com",
 ];
 
